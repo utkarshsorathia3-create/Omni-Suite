@@ -58,6 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body>
         <div className="layout-wrapper" style={{ display: 'flex', height: '100vh', width: '100vw' }}>
           <Suspense fallback={<div style={{ width: 'var(--sidebar-width)', background: 'var(--bg-dark)' }} />}>
