@@ -21,42 +21,42 @@ const ContrastChecker = () => {
   const getStatus = (target: number) => ratio >= target;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+    <div className="tool-layout">
+      <div className="tool-grid">
         {/* Controls */}
-        <div className="glass-panel" style={{ padding: '2rem' }}>
+        <div className="glass-panel">
           <h3 className="font-outfit" style={{ fontSize: '1.2rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Sparkles size={18} /> Color Analyzer
+            <Sparkles size={18} className="text-gradient" /> Color Analyzer
           </h3>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-               <div>
-                  <label style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Foreground</label>
+          <div className="panel-stack">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+               <div style={{ flex: 1, textAlign: 'center' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>Foreground</label>
                   <input 
                     type="color" 
                     value={fg} 
                     onChange={(e) => setFg(e.target.value)}
-                    style={{ width: '100px', height: '50px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', borderRadius: '8px' }}
+                    style={{ width: '100%', maxWidth: '80px', height: '50px', background: 'transparent', border: 'none', cursor: 'pointer', outline: 'none', padding: 0 }}
                   />
-                  <div style={{ marginTop: '0.5rem', fontFamily: 'monospace', color: 'var(--text-muted)' }}>{fg.toUpperCase()}</div>
+                  <div style={{ marginTop: '0.75rem', fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{fg.toUpperCase()}</div>
                </div>
-               <div style={{ width: '1px', height: '60px', background: 'rgba(255,255,255,0.1)' }} />
-               <div style={{ textAlign: 'right' }}>
-                  <label style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Background</label>
+               <div style={{ width: '1px', height: '60px', background: 'rgba(255,255,255,0.05)' }} />
+               <div style={{ flex: 1, textAlign: 'center' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>Background</label>
                   <input 
                     type="color" 
                     value={bg} 
                     onChange={(e) => setBg(e.target.value)}
-                    style={{ width: '100px', height: '50px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', borderRadius: '8px' }}
+                    style={{ width: '100%', maxWidth: '80px', height: '50px', background: 'transparent', border: 'none', cursor: 'pointer', outline: 'none', padding: 0 }}
                   />
-                  <div style={{ marginTop: '0.5rem', fontFamily: 'monospace', color: 'var(--text-muted)' }}>{bg.toUpperCase()}</div>
+                  <div style={{ marginTop: '0.75rem', fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{bg.toUpperCase()}</div>
                </div>
             </div>
 
-            <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '16px', textAlign: 'center' }}>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Contrast Ratio</div>
-              <div style={{ fontSize: '3rem', fontWeight: 800, color: 'white', fontFamily: 'Outfit' }}>{ratio.toFixed(2)} : 1</div>
+            <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1.5rem', borderRadius: '20px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: 700 }}>Contrast Ratio</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: 800, color: 'white', fontFamily: 'Outfit' }}>{ratio.toFixed(2)} : 1</div>
             </div>
           </div>
         </div>
@@ -74,24 +74,25 @@ const ContrastChecker = () => {
               flexDirection: 'column', 
               justifyContent: 'center',
               borderRadius: '24px',
-              border: '1px solid rgba(255,255,255,0.1)'
+              border: '1px solid rgba(255,255,255,0.05)',
+              minHeight: '200px'
             }}
           >
-            <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1rem', color: 'inherit' }}>Live Preview</h2>
-            <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'inherit', opacity: 0.9 }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '1rem', color: 'inherit' }}>Live Preview</h2>
+            <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'inherit', opacity: 0.9 }}>
               This is a live preview of how your colors interact. Accessible design is inclusive design.
               Ensure that your text remains readable for everyone.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-            <div className="glass-panel" style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: getStatus(4.5) ? 'rgba(74, 222, 128, 0.05)' : 'rgba(248, 113, 113, 0.05)' }}>
-              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>WCAG AA (4.5:1)</span>
-              {getStatus(4.5) ? <ShieldCheck size={20} color="#4ade80" /> : <ShieldAlert size={20} color="#f87171" />}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem' }}>
+            <div className="glass-panel" style={{ padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: getStatus(4.5) ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: getStatus(4.5) ? '1px solid rgba(34, 197, 94, 0.2)' : '1px solid rgba(239, 68, 68, 0.2)' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700 }}>WCAG AA</span>
+              {getStatus(4.5) ? <ShieldCheck size={18} color="#4ade80" /> : <ShieldAlert size={18} color="#f87171" />}
             </div>
-            <div className="glass-panel" style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: getStatus(7) ? 'rgba(74, 222, 128, 0.05)' : 'rgba(248, 113, 113, 0.05)' }}>
-              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>WCAG AAA (7:1)</span>
-              {getStatus(7) ? <ShieldCheck size={20} color="#4ade80" /> : <ShieldAlert size={20} color="#f87171" />}
+            <div className="glass-panel" style={{ padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: getStatus(7) ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: getStatus(7) ? '1px solid rgba(34, 197, 94, 0.2)' : '1px solid rgba(239, 68, 68, 0.2)' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700 }}>WCAG AAA</span>
+              {getStatus(7) ? <ShieldCheck size={18} color="#4ade80" /> : <ShieldAlert size={18} color="#f87171" />}
             </div>
           </div>
         </div>

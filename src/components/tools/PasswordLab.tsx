@@ -73,56 +73,76 @@ const PasswordLab = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div className="glass-panel" style={{ padding: '3rem' }}>
+    <div className="tool-layout">
+      <div className="glass-panel">
         {/* Output Area */}
-        <div style={{ position: 'relative', marginBottom: '3rem' }}>
+        <div style={{ position: 'relative', marginBottom: '2.5rem' }}>
           <div style={{ 
             background: 'rgba(0,0,0,0.3)', 
-            padding: '2rem', 
-            borderRadius: '16px', 
-            border: '1px solid rgba(255,255,255,0.05)',
+            padding: '2rem 1.5rem', 
+            borderRadius: '20px', 
+            border: '2px solid rgba(255,255,255,0.03)',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '100px'
+            minHeight: '120px',
+            position: 'relative'
           }}>
             <span style={{ 
-              fontSize: '2rem', 
+              fontSize: 'min(2rem, 6vw)', 
               fontFamily: 'JetBrains Mono, monospace', 
               color: 'white', 
-              letterSpacing: '0.1em',
+              letterSpacing: '0.05em',
               wordBreak: 'break-all',
-              textAlign: 'center'
+              textAlign: 'center',
+              lineHeight: '1.4',
+              padding: '0 1rem'
             }}>
               {password}
             </span>
           </div>
-          <div style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%)', display: 'flex', gap: '0.5rem' }}>
-             <button onClick={generatePassword} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '8px', padding: '0.75rem', color: 'white' }}><RefreshCw size={20} /></button>
-             <button onClick={copyToClipboard} style={{ background: 'var(--accent-primary)', border: 'none', borderRadius: '8px', padding: '0.75rem', color: 'white' }}>
+          <div style={{ 
+            display: 'flex', 
+            gap: '0.75rem', 
+            marginTop: '1.5rem',
+            justifyContent: 'center'
+          }}>
+             <button 
+              onClick={generatePassword} 
+              className="menuButton"
+              style={{ width: '45px', height: '45px' }}
+             >
+               <RefreshCw size={20} />
+             </button>
+             <button 
+              onClick={copyToClipboard} 
+              className="btn-primary"
+              style={{ padding: '0 1.5rem', borderRadius: '12px', height: '45px' }}
+             >
                {isCopied ? <Check size={20} /> : <Copy size={20} />}
+               <span style={{ marginLeft: '0.5rem' }}>{isCopied ? 'Copied' : 'Copy'}</span>
              </button>
           </div>
         </div>
 
         {/* Strength Bar */}
-        <div style={{ marginBottom: '3rem' }}>
+        <div style={{ marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-            <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Security Level</span>
-            <span style={{ fontSize: '0.9rem', color: strength.color, fontWeight: 700, textTransform: 'uppercase' }}>{strength.text}</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Security Strength</span>
+            <span style={{ fontSize: '0.85rem', color: strength.color, fontWeight: 800, textTransform: 'uppercase' }}>{strength.text}</span>
           </div>
-          <div style={{ height: '8px', width: '100%', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: `${(strength.score / 5) * 100}%`, background: strength.color, transition: 'var(--transition-smooth)' }} />
+          <div style={{ height: '10px', width: '100%', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden', padding: '2px' }}>
+            <div style={{ height: '100%', width: `${(strength.score / 5) * 100}%`, background: strength.color, transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', borderRadius: '10px' }} />
           </div>
         </div>
 
         {/* Configuration */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
            <div>
-             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-               <label style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Password Length</label>
-               <span style={{ color: 'var(--accent-primary)', fontWeight: 700 }}>{length}</span>
+             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+               <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Password Length</label>
+               <span style={{ color: 'var(--accent-primary)', fontWeight: 800, fontSize: '1.1rem' }}>{length}</span>
              </div>
              <input 
               type="range" 
@@ -130,27 +150,33 @@ const PasswordLab = () => {
               max="64" 
               value={length} 
               onChange={(e) => setLength(parseInt(e.target.value))}
-              style={{ width: '100%', accentColor: 'var(--accent-primary)' }}
+              style={{ width: '100%', accentColor: 'var(--accent-primary)', height: '1.5rem', cursor: 'pointer' }}
              />
            </div>
 
-           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.75rem' }}>
               {Object.entries(options).map(([key, value]) => (
                 <button 
                   key={key}
                   onClick={() => setOptions({...options, [key]: !value})}
                   style={{ 
-                    padding: '0.75rem', 
-                    borderRadius: '10px', 
+                    padding: '0.8rem', 
+                    borderRadius: '12px', 
                     border: '1px solid',
-                    borderColor: value ? 'var(--accent-primary)' : 'rgba(255,255,255,0.1)',
-                    background: value ? 'rgba(139, 92, 246, 0.1)' : 'transparent',
+                    borderColor: value ? 'rgba(139, 92, 246, 0.3)' : 'rgba(255,255,255,0.05)',
+                    background: value ? 'rgba(139, 92, 246, 0.15)' : 'rgba(255,255,255,0.02)',
                     color: value ? 'white' : 'var(--text-muted)',
                     fontSize: '0.85rem',
                     textTransform: 'capitalize',
-                    fontWeight: 600
+                    fontWeight: 700,
+                    transition: 'all 0.2s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem'
                   }}
                 >
+                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: value ? 'var(--accent-primary)' : 'rgba(255,255,255,0.1)' }} />
                   {key}
                 </button>
               ))}

@@ -58,15 +58,15 @@ const CodeToImage = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="tool-layout">
       {/* Controls Bar */}
-      <div className="glass-panel" style={{ padding: '1rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Palette size={16} />
+      <div className="glass-panel" style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', padding: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem 0.75rem', borderRadius: '8px' }}>
+          <Palette size={16} className="text-gradient" />
           <select 
             value={theme} 
             onChange={(e) => setTheme(e.target.value as any)}
-            style={{ background: 'transparent', color: 'white', border: 'none', outline: 'none', fontSize: '0.9rem' }}
+            style={{ background: 'transparent', color: 'white', border: 'none', outline: 'none', fontSize: '0.85rem', cursor: 'pointer' }}
           >
             {Object.entries(THEMES).map(([id, t]) => (
               <option key={id} value={id} style={{ background: '#1a1a1a' }}>{t.name}</option>
@@ -74,43 +74,39 @@ const CodeToImage = () => {
           </select>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Padding</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, minWidth: '150px' }}>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>Padding</span>
           <input 
             type="range" 
             min="20" 
             max="120" 
             value={padding} 
             onChange={(e) => setPadding(parseInt(e.target.value))}
-            style={{ accentColor: 'var(--accent-primary)' }}
+            style={{ width: '100%', accentColor: 'var(--accent-primary)', cursor: 'pointer' }}
           />
         </div>
 
         <button 
           onClick={handleDownload}
+          className="btn-primary"
           style={{ 
-            marginLeft: 'auto',
-            background: 'var(--accent-primary)', 
-            color: 'white', 
-            border: 'none', 
             padding: '0.6rem 1.2rem', 
             borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            fontWeight: 600
+            fontSize: '0.9rem',
+            width: 'auto'
           }}
         >
           <Download size={16} />
-          Export PNG
+          <span className="hide-mobile">Export PNG</span>
+          <span className="show-mobile-inline">Export</span>
         </button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+      <div className="tool-grid">
         {/* Editor Side */}
-        <div className="glass-panel" style={{ padding: '1.5rem' }}>
+        <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', minHeight: '300px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Editor</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Source Editor</span>
             <Type size={14} style={{ color: 'var(--text-muted)' }} />
           </div>
           <textarea
@@ -119,7 +115,7 @@ const CodeToImage = () => {
             spellCheck={false}
             style={{
               width: '100%',
-              height: '300px',
+              flex: 1,
               background: 'rgba(0,0,0,0.2)',
               border: '1px solid rgba(255,255,255,0.05)',
               borderRadius: '8px',
@@ -135,9 +131,9 @@ const CodeToImage = () => {
         </div>
 
         {/* Preview Side */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Preview</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Export Preview</span>
             <Maximize2 size={14} style={{ color: 'var(--text-muted)' }} />
           </div>
           
@@ -146,12 +142,14 @@ const CodeToImage = () => {
             style={{ 
               background: THEMES[theme].bg,
               padding: `${padding}px`,
-              borderRadius: '12px',
+              borderRadius: '16px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: '400px',
-              transition: 'var(--transition-smooth)'
+              minHeight: '350px',
+              transition: 'var(--transition-smooth)',
+              overflow: 'hidden',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
             }}
           >
             <div 
@@ -162,21 +160,22 @@ const CodeToImage = () => {
                 border: THEMES[theme].border,
                 borderRadius: '12px',
                 padding: '1.5rem',
-                minWidth: '350px',
+                minWidth: '200px',
+                width: '100%',
                 boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
                 boxSizing: 'border-box'
               }}
             >
               <div style={{ display: 'flex', gap: '6px', marginBottom: '1.25rem' }}>
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
+                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
               
               <pre style={{ 
                 margin: 0, 
                 fontFamily: 'JetBrains Mono, monospace', 
-                fontSize: '15px', 
+                fontSize: '13px', 
                 lineHeight: '1.6',
                 color: '#e2e8f0',
                 whiteSpace: 'pre-wrap',

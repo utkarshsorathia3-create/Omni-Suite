@@ -19,64 +19,58 @@ const MarkdownEditor = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', height: '100%' }}>
+    <div className="tool-layout">
       {/* Toolbar */}
-      <div className="glass-panel" style={{ padding: '0.75rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div className="glass-panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
           <button 
             onClick={() => setView('edit')}
             style={{ 
               background: view === 'edit' ? 'rgba(255,255,255,0.1)' : 'transparent', 
               color: view === 'edit' ? 'white' : 'var(--text-muted)',
-              border: 'none', padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem'
+              border: 'none', padding: '0.5rem 0.85rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer'
             }}
           >
-            <FileEdit size={16} /> Edit
+            <FileEdit size={14} /> Edit
           </button>
           <button 
             onClick={() => setView('preview')}
             style={{ 
               background: view === 'preview' ? 'rgba(255,255,255,0.1)' : 'transparent', 
               color: view === 'preview' ? 'white' : 'var(--text-muted)',
-              border: 'none', padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem'
+              border: 'none', padding: '0.5rem 0.85rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer'
             }}
           >
-            <Eye size={16} /> Preview
+            <Eye size={14} /> Preview
           </button>
           <button 
+            className="hide-mobile"
             onClick={() => setView('split')}
             style={{ 
               background: view === 'split' ? 'rgba(255,255,255,0.1)' : 'transparent', 
               color: view === 'split' ? 'white' : 'var(--text-muted)',
-              border: 'none', padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem'
+              border: 'none', padding: '0.5rem 0.85rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer'
             }}
           >
-            <Layout size={16} /> Split
+            <Layout size={14} /> Split
           </button>
         </div>
 
         <button 
           onClick={downloadMd}
-          style={{ 
-            background: 'var(--accent-primary)', color: 'white', border: 'none', padding: '0.5rem 1.5rem', borderRadius: '8px', fontWeight: 600, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem'
-          }}
+          className="btn-primary"
+          style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
         >
-          <Download size={16} /> Export .md
+          <Download size={16} /> Export
         </button>
       </div>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: view === 'split' ? '1fr 1fr' : '1fr', 
-        gap: '2rem', 
-        height: '650px',
-        maxHeight: 'calc(100vh - 350px)'
-      }}>
+      <div className={view === 'split' ? 'tool-grid h-600' : 'h-600'}>
         {/* Editor */}
         {(view === 'edit' || view === 'split') && (
-          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ padding: '0.75rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Source Editor</span>
+          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
+            <div style={{ padding: '0.75rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Source Editor</span>
               <Type size={14} style={{ color: 'var(--text-muted)' }} />
             </div>
             <textarea
@@ -87,15 +81,17 @@ const MarkdownEditor = () => {
               style={{
                 flex: 1,
                 width: '100%',
+                minHeight: '400px',
                 background: 'transparent',
                 border: 'none',
-                padding: '1.5rem',
+                padding: '1.25rem',
                 color: 'var(--text-primary)',
-                fontSize: '15px',
+                fontSize: '14px',
                 lineHeight: '1.6',
                 resize: 'none',
                 outline: 'none',
-                overflowY: 'auto'
+                overflowY: 'auto',
+                fontFamily: 'JetBrains Mono, monospace'
               }}
             />
           </div>
@@ -103,19 +99,20 @@ const MarkdownEditor = () => {
 
         {/* Preview */}
         {(view === 'preview' || view === 'split') && (
-          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', background: 'rgba(0,0,0,0.2)' }}>
-            <div style={{ padding: '0.75rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Live Architect Preview</span>
+          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', background: 'rgba(0,0,0,0.2)', padding: 0, overflow: 'hidden' }}>
+            <div style={{ padding: '0.75rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Live Architect Preview</span>
             </div>
             <div 
               className="markdown-preview"
               style={{ 
                 flex: 1, 
-                padding: '1.5rem 2rem', 
+                padding: '1.5rem', 
                 overflowY: 'auto',
-                fontSize: '1rem',
+                fontSize: '0.95rem',
                 lineHeight: '1.7',
-                color: '#e2e8f0'
+                color: '#e2e8f0',
+                minHeight: '400px'
               }}
             >
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>

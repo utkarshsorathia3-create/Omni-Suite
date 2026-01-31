@@ -36,9 +36,9 @@ const JsonMaster = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="tool-layout">
       {/* Header Actions */}
-      <div className="glass-panel" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <div className="glass-panel" style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: error ? '#f87171' : '#4ade80' }}>
           {error ? <XCircle size={18} /> : <CheckCircle size={18} />}
           <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>
@@ -46,25 +46,25 @@ const JsonMaster = () => {
           </span>
         </div>
 
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.75rem' }}>
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           <button 
             onClick={() => handleCopy('pretty')}
             disabled={!!error}
-            className="tool-btn"
             style={{ 
               background: 'rgba(255,255,255,0.05)', 
               color: 'white', 
               border: '1px solid rgba(255,255,255,0.1)', 
               padding: '0.5rem 1rem', 
-              borderRadius: '8px',
+              borderRadius: '10px',
               opacity: error ? 0.5 : 1,
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem'
+              gap: '0.5rem',
+              fontSize: '0.85rem'
             }}
           >
             <Copy size={16} />
-            {isCopied ? 'Copied!' : 'Copy Pretty'}
+            {isCopied ? 'Copied!' : 'Pretty'}
           </button>
           <button 
             onClick={() => handleCopy('minify')}
@@ -74,8 +74,9 @@ const JsonMaster = () => {
               color: 'white', 
               border: '1px solid rgba(255,255,255,0.1)', 
               padding: '0.5rem 1rem', 
-              borderRadius: '8px',
-              opacity: error ? 0.5 : 1
+              borderRadius: '10px',
+              opacity: error ? 0.5 : 1,
+              fontSize: '0.85rem'
             }}
           >
             Minify
@@ -86,8 +87,8 @@ const JsonMaster = () => {
               background: 'rgba(248,113,113,0.1)', 
               color: '#f87171', 
               border: '1px solid rgba(248,113,113,0.2)', 
-              padding: '0.5rem 1rem', 
-              borderRadius: '8px'
+              padding: '0.5rem 0.75rem', 
+              borderRadius: '10px'
             }}
           >
             <Trash2 size={16} />
@@ -95,7 +96,7 @@ const JsonMaster = () => {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '2rem', height: '600px' }}>
+      <div className="tool-grid h-600">
         {/* Input Area */}
         <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
           <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between' }}>
@@ -109,6 +110,7 @@ const JsonMaster = () => {
             style={{
               flex: 1,
               width: '100%',
+              minHeight: '300px',
               background: 'transparent',
               border: 'none',
               padding: '1.5rem',
@@ -132,7 +134,8 @@ const JsonMaster = () => {
             flex: 1, 
             padding: '1.5rem', 
             overflowY: 'auto',
-            background: 'rgba(0,0,0,0.2)' 
+            background: 'rgba(0,0,0,0.2)',
+            minHeight: '300px'
           }}>
             {data ? (
               <JsonView 

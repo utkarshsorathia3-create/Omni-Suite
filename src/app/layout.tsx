@@ -66,12 +66,12 @@ export default function RootLayout({
       <body>
         <SpeedInsights sampleRate={100} />
         <Analytics />
-        <div className="layout-wrapper" style={{ display: 'flex', height: '100vh', width: '100vw' }}>
-          <Suspense fallback={<div style={{ width: 'var(--sidebar-width)', background: 'var(--bg-dark)' }} />}>
+        <div className="layout-container">
+          <Suspense fallback={null}>
             <Sidebar />
             <GoogleAnalytics />
           </Suspense>
-          <main className="workspace" style={{ flex: 1, overflowY: 'auto', position: 'relative' }}>
+          <main className="workspace-area">
             <div className="glow-background" style={{
               position: 'absolute',
               top: 0,
@@ -83,7 +83,7 @@ export default function RootLayout({
               pointerEvents: 'none',
               zIndex: 0
             }} />
-            <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ position: 'relative', zIndex: 1, minHeight: '100%', display: 'flex', flexDirection: 'column' }}>
               <div style={{ flex: 1 }}>
                 {children}
               </div>

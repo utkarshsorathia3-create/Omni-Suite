@@ -60,91 +60,98 @@ const RegexTester = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div className="glass-panel" style={{ padding: '2rem' }}>
+    <div className="tool-layout">
+      <div className="glass-panel">
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
           <div style={{ flex: 1 }}>
-            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Regular Expression</label>
-            <div style={{ display: 'flex', position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontFamily: 'monospace' }}>/</span>
+            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.8rem', display: 'block', fontWeight: 600 }}>Regular Expression</label>
+            <div style={{ display: 'flex', position: 'relative', alignItems: 'center' }}>
+              <span style={{ position: 'absolute', left: '1rem', color: 'var(--text-muted)', fontFamily: 'monospace', fontWeight: 700, fontSize: '1.2rem' }}>/</span>
               <input 
                 type="text" 
                 value={regex}
                 onChange={(e) => setRegex(e.target.value)}
+                spellCheck={false}
                 style={{ 
                   width: '100%', 
                   background: 'rgba(255,255,255,0.05)', 
                   border: `1px solid ${error ? '#f87171' : 'rgba(255,255,255,0.1)'}`, 
-                  padding: '1rem 3rem', 
+                  padding: '1rem 3.5rem 1rem 2.5rem', 
                   borderRadius: '12px', 
                   color: 'white', 
-                  fontFamily: 'monospace',
-                  outline: 'none'
+                  fontFamily: 'JetBrains Mono, monospace',
+                  outline: 'none',
+                  fontSize: '0.95rem'
                 }}
               />
-              <span style={{ position: 'absolute', right: '4.5rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontFamily: 'monospace' }}>/</span>
-              <input 
-                type="text" 
-                value={flags}
-                onChange={(e) => setFlags(e.target.value)}
-                style={{ 
-                  width: '60px', 
-                  position: 'absolute', 
-                  right: '0.5rem', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255,255,255,0.1)',
-                  border: 'none',
-                  borderRadius: '8px',
-                  padding: '0.5rem',
-                  color: 'var(--accent-primary)',
-                  fontWeight: 800,
-                  textAlign: 'center'
-                }}
-              />
+              <div style={{ position: 'absolute', right: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                <span style={{ color: 'var(--text-muted)', fontFamily: 'monospace', fontWeight: 700 }}>/</span>
+                <input 
+                  type="text" 
+                  value={flags}
+                  onChange={(e) => setFlags(e.target.value)}
+                  placeholder="gim"
+                  style={{ 
+                    width: '45px', 
+                    background: 'rgba(139, 92, 246, 0.2)',
+                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    borderRadius: '8px',
+                    padding: '0.4rem 0.2rem',
+                    color: 'var(--accent-primary)',
+                    fontWeight: 800,
+                    textAlign: 'center',
+                    outline: 'none',
+                    fontSize: '0.9rem'
+                  }}
+                />
+              </div>
             </div>
-            {error && <div style={{ color: '#f87171', fontSize: '0.8rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            {error && <div style={{ color: '#f87171', fontSize: '0.8rem', marginTop: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(248,113,113,0.1)', padding: '0.5rem 0.75rem', borderRadius: '8px' }}>
               <AlertTriangle size={14} /> {error}
             </div>}
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+        <div className="tool-grid">
           {/* Test String */}
-          <div>
-            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Test String</label>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.8rem', display: 'block', fontWeight: 600 }}>Test String</label>
             <textarea 
               value={testText}
               onChange={(e) => setTestText(e.target.value)}
+              spellCheck={false}
               style={{ 
                 width: '100%', 
-                height: '250px', 
+                minHeight: '250px', 
                 background: 'rgba(0,0,0,0.2)', 
                 border: '1px solid rgba(255,255,255,0.05)', 
                 borderRadius: '12px', 
-                padding: '1.5rem', 
+                padding: '1.25rem', 
                 color: 'var(--text-primary)', 
                 fontFamily: 'Inter, sans-serif',
                 resize: 'none',
                 outline: 'none',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                fontSize: '0.95rem'
               }}
             />
           </div>
 
           {/* Matches & Highlights */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Match Result ({matches.length})</label>
+            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.8rem', display: 'block', fontWeight: 600 }}>Match Result ({matches.length})</label>
             <div style={{ 
               flex: 1, 
+              minHeight: '250px',
               background: 'rgba(255,255,255,0.02)', 
               border: '1px solid rgba(255,255,255,0.05)', 
               borderRadius: '12px', 
-              padding: '1.5rem', 
+              padding: '1.25rem', 
               overflowY: 'auto',
               fontFamily: 'Inter, sans-serif',
               lineHeight: '1.6',
-              whiteSpace: 'pre-wrap'
+              whiteSpace: 'pre-wrap',
+              fontSize: '0.95rem'
             }}>
               {highlightMatches()}
             </div>

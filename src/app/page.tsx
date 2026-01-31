@@ -42,7 +42,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
   };
 
   return (
-    <div style={{ padding: '3rem', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="tool-container">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -53,25 +53,21 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
 
-      <header style={{ marginBottom: '4rem' }} className="animate-fade">
-        <h1 className="font-outfit" style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1rem' }}>
+      <header style={{ marginBottom: '3rem' }} className="animate-fade">
+        <h1 className="font-outfit tool-title" style={{ fontWeight: 800 }}>
           Welcome to <span className="text-gradient">OmniSuite</span>
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '600px' }}>
+        <p className="tool-description" style={{ textAlign: 'left', margin: '0' }}>
           Select a tool from the sidebar or browse the collection below to start your productive session.
         </p>
       </header>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-        gap: '1.5rem' 
-      }}>
+      <div className="responsive-grid">
         {filteredTools.map((tool, index) => (
           <Link 
             key={tool.slug} 
             href={`/tools/${tool.slug}`}
-            className="glass-panel animate-fade"
+            className="glass-card animate-fade"
             style={{ 
               padding: '2rem', 
               display: 'flex', 
@@ -80,7 +76,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
               position: 'relative',
               overflow: 'hidden',
               textDecoration: 'none',
-              color: 'inherit'
+              color: 'inherit',
+              transition: 'var(--transition-smooth)'
             }}
           >
             <div style={{ 

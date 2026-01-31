@@ -61,13 +61,13 @@ export default async function ToolPage({ params }: Props) {
   };
 
   return (
-    <main className="container-padding animate-fade" style={{ maxWidth: '1200px', margin: '0 auto', paddingTop: '2rem' }}>
+    <main className="tool-container animate-fade">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <nav style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
+      <nav style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
         <Link href="/" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Dashboard</Link>
         <span style={{ color: 'var(--text-muted)' }}>/</span>
         <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>{tool.name}</span>
@@ -84,44 +84,42 @@ export default async function ToolPage({ params }: Props) {
           fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          marginBottom: '1.5rem',
+          marginBottom: '1rem',
           border: '1px solid rgba(139, 92, 246, 0.2)'
         }}>
           {tool.category} Professional
         </div>
-        <h1 className="font-outfit text-gradient" style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.1 }}>
+        <h1 className="font-outfit tool-title text-gradient">
           {tool.name}
         </h1>
-        <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '800px', lineHeight: 1.6 }}>
+        <p className="tool-description">
           {tool.description}
         </p>
       </header>
 
-      <section style={{ minHeight: '600px', marginBottom: '6rem' }}>
+      <section style={{ minHeight: '500px', marginBottom: '4rem' }}>
         {ToolComponent ? (
           <ToolComponent />
         ) : (
-          <div className="glass-panel" style={{ padding: '6rem 2rem', textAlign: 'center' }}>
-            <h2 style={{ opacity: 0.5, fontSize: '1.5rem' }}>Initializing Studio Interface...</h2>
-            <p style={{ color: 'var(--text-muted)', marginTop: '1rem' }}>This experimental tool is currently being optimized for high performance.</p>
+          <div className="glass-card" style={{ padding: '6rem 2rem', textAlign: 'center' }}>
+            <h2 style={{ opacity: 0.5, fontSize: '1.5rem' }}>Initializing Interface...</h2>
+            <p style={{ color: 'var(--text-muted)', marginTop: '1rem' }}>This tool is currently being optimized.</p>
           </div>
         )}
       </section>
 
       {/* SEO Content Section */}
-      <section style={{ padding: '4rem', background: 'rgba(255,255,255,0.02)', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.05)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+      <section className="glass-card" style={{ padding: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           <div>
-            <h2 className="font-outfit" style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>Why use {tool.name}?</h2>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
-              In a digital-first world, efficiency is everything. Our {tool.name} provides a seamless, 
-              local-first experience. No data is sent to our servers, ensuring 100% privacy and blazing-fast performance 
-              for all your {tool.category} needs.
+            <h2 className="font-outfit" style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Why use {tool.name}?</h2>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', fontSize: '0.95rem' }}>
+              Our {tool.name} provides a seamless, local-first experience. No data is sent to our servers, ensuring 100% privacy and blazing-fast performance for all your requirements.
             </p>
           </div>
           <div>
-            <h2 className="font-outfit" style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>Key Features</h2>
-            <ul style={{ color: 'var(--text-secondary)', lineHeight: '2', paddingLeft: '1.2rem' }}>
+            <h2 className="font-outfit" style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Key Features</h2>
+            <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.8', paddingLeft: '1.2rem', fontSize: '0.95rem' }}>
               <li>Instant Browser-Based Processing</li>
               <li>Privacy-Focused (No Data Collection)</li>
               <li>Premium Glassmorphic Interface</li>

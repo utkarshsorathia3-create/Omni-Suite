@@ -35,46 +35,76 @@ const Base64Converter = () => {
   };
 
   return (
-    <div className="animate-fade">
-      <div className="glass-panel" style={{ padding: '2.5rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-          <h3 className="font-outfit" style={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Layers size={18} /> Base64 Laboratory
+    <div className="tool-layout">
+      <div className="glass-panel">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <h3 className="font-outfit" style={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Layers size={22} className="text-gradient" /> Base64 Laboratory
           </h3>
           <button 
             onClick={switchMode}
+            className="btn-primary"
             style={{ 
-              background: 'rgba(139, 92, 246, 0.1)', border: '1px solid var(--accent-primary)', color: 'var(--accent-primary)',
-              padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem'
+              padding: '0.6rem 1.25rem', fontSize: '0.85rem', width: 'auto'
             }}
           >
-            <ArrowRightLeft size={16} /> Switch to {mode === 'encode' ? 'Decode' : 'Encode'}
+            <ArrowRightLeft size={16} /> <span className="hide-mobile">Switch to {mode === 'encode' ? 'Decode' : 'Encode'}</span><span className="show-mobile-inline">Switch</span>
           </button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+        <div className="tool-grid">
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <label style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Raw Text</label>
+            <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.8rem', fontWeight: 700 }}>Raw Input</label>
             <textarea 
               value={input}
               onChange={(e) => handleConvert(e.target.value)}
-              className="font-mono"
-              style={{ flex: 1, minHeight: '300px', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px', padding: '1.5rem', color: 'white', resize: 'none', outline: 'none' }}
+              placeholder="Enter text here..."
+              style={{ 
+                width: '100%',
+                minHeight: '280px', 
+                background: 'rgba(0,0,0,0.2)', 
+                border: '1px solid rgba(255,255,255,0.05)', 
+                borderRadius: '12px', 
+                padding: '1.25rem', 
+                color: 'white', 
+                resize: 'none', 
+                outline: 'none',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.9rem',
+                lineHeight: '1.6'
+              }}
             />
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-              <label style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Base64 Result</label>
-              <button onClick={copyResult} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
-                {isCopied ? <span style={{ color: '#4ade80', fontSize: '0.7rem' }}>Copied!</span> : <Copy size={14} />}
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
+              <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Base64 Result</label>
+              <button 
+                onClick={copyResult} 
+                className="menuButton"
+                style={{ width: '32px', height: '32px' }}
+              >
+                {isCopied ? <span style={{ color: '#4ade80', fontSize: '0.7rem' }}>Ok</span> : <Copy size={14} />}
               </button>
             </div>
             <textarea 
               value={output}
               readOnly
-              className="font-mono"
-              style={{ flex: 1, minHeight: '300px', background: 'rgba(139, 92, 246, 0.05)', border: '1px solid rgba(139, 92, 246, 0.1)', borderRadius: '12px', padding: '1.5rem', color: 'var(--accent-primary)', resize: 'none', outline: 'none' }}
+              placeholder="Conversion result..."
+              style={{ 
+                width: '100%',
+                minHeight: '280px', 
+                background: 'rgba(139, 92, 246, 0.03)', 
+                border: '1px solid rgba(139, 92, 246, 0.1)', 
+                borderRadius: '12px', 
+                padding: '1.25rem', 
+                color: 'var(--accent-primary)', 
+                resize: 'none', 
+                outline: 'none',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.9rem',
+                lineHeight: '1.6'
+              }}
             />
           </div>
         </div>

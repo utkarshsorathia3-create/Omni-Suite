@@ -34,21 +34,21 @@ const LoremIpsum = () => {
   }, [paragraphs, type]);
 
   return (
-    <div className="animate-fade">
-      <div className="glass-panel" style={{ padding: '3rem', maxWidth: '900px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-          <h3 className="font-outfit" style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+    <div className="tool-layout">
+      <div className="glass-panel" style={{ maxWidth: '900px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <h3 className="font-outfit" style={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <Type size={24} className="text-gradient" /> Placeholder Forge
           </h3>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
              <select 
               value={type} 
               onChange={(e) => setType(e.target.value as any)}
-              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.6rem 1rem', borderRadius: '10px', color: 'white', outline: 'none' }}
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.6rem 1rem', borderRadius: '10px', color: 'white', outline: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
              >
-                <option value="standard">Classic Lorem</option>
-                <option value="techno">Techno Corporate</option>
-                <option value="startup">Startup Buzzwords</option>
+                <option value="standard" style={{ background: '#111' }}>Classic Lorem</option>
+                <option value="techno" style={{ background: '#111' }}>Techno Corporate</option>
+                <option value="startup" style={{ background: '#111' }}>Startup Buzzwords</option>
              </select>
              <input 
               type="number" 
@@ -56,7 +56,7 @@ const LoremIpsum = () => {
               max="20" 
               value={paragraphs} 
               onChange={(e) => setParagraphs(parseInt(e.target.value))}
-              style={{ width: '80px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.6rem', borderRadius: '10px', color: 'white', textAlign: 'center' }}
+              style={{ width: '70px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.6rem', borderRadius: '10px', color: 'white', textAlign: 'center', outline: 'none' }}
              />
           </div>
         </div>
@@ -64,26 +64,39 @@ const LoremIpsum = () => {
         <div style={{ position: 'relative' }}>
           <div style={{ 
             background: 'rgba(0,0,0,0.3)', 
-            padding: '2rem', 
-            borderRadius: '16px', 
-            minHeight: '400px',
+            padding: '2rem 1.5rem', 
+            borderRadius: '20px', 
+            minHeight: '300px',
             color: 'var(--text-secondary)',
             lineHeight: '1.8',
             fontSize: '1rem',
-            whiteSpace: 'pre-wrap'
+            whiteSpace: 'pre-wrap',
+            border: '2px solid rgba(255,255,255,0.02)'
           }}>
             {generated}
           </div>
           
-          <div style={{ position: 'absolute', top: '1rem', right: '1rem', display: 'flex', gap: '0.5rem' }}>
-             <button onClick={generate} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '8px', padding: '0.5rem', color: 'var(--text-muted)' }}><RefreshCw size={18} /></button>
+          <div style={{ 
+            display: 'flex', 
+            gap: '0.75rem', 
+            justifyContent: 'flex-end',
+            marginTop: '1.5rem'
+          }}>
+             <button 
+              onClick={generate} 
+              className="menuButton"
+              style={{ width: '45px', height: '45px', background: 'rgba(255,255,255,0.03)' }}
+             >
+               <RefreshCw size={18} />
+             </button>
              <button 
               onClick={copyText}
+              className="btn-primary"
               style={{ 
-                background: 'var(--accent-primary)', color: 'white', border: 'none', borderRadius: '8px', padding: '0.5rem 1.25rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem'
+                padding: '0 1.5rem', borderRadius: '12px', height: '45px'
               }}
              >
-                {isCopied ? 'Copied!' : <><Copy size={16} /> Copy Text</>}
+                {isCopied ? 'Copied!' : <><Copy size={16} /> <span className="hide-mobile">Copy Text</span><span className="show-mobile-inline">Copy</span></>}
              </button>
           </div>
         </div>

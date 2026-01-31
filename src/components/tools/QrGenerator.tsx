@@ -33,64 +33,71 @@ const QrGenerator = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '2rem' }}>
+    <div className="tool-layout">
+      <div className="tool-grid">
         {/* Settings */}
-        <div className="glass-panel" style={{ padding: '2rem' }}>
-          <h3 className="font-outfit" style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Settings size={18} /> Configuration
+        <div className="glass-panel">
+          <h3 className="font-outfit" style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Settings size={18} className="text-gradient" /> Configuration
           </h3>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div className="panel-stack">
             <div>
-              <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>URL or Text</label>
+              <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'block', fontWeight: 600 }}>URL or Text</label>
               <input 
                 type="text" 
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '12px', color: 'white', outline: 'none' }}
+                placeholder="Enter URL or text..."
+                style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.8rem 1rem', borderRadius: '12px', color: 'white', outline: 'none', fontSize: '0.9rem' }}
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Brand Color</label>
-                <input 
-                  type="color" 
-                  value={bgColor}
-                  onChange={(e) => setBgColor(e.target.value)}
-                  style={{ width: '100%', height: '45px', background: 'transparent', border: 'none', cursor: 'pointer' }}
-                />
+                <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block', fontWeight: 600 }}>Background</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '10px' }}>
+                  <input 
+                    type="color" 
+                    value={bgColor}
+                    onChange={(e) => setBgColor(e.target.value)}
+                    style={{ width: '36px', height: '36px', background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
+                  />
+                  <span style={{ fontSize: '0.8rem', fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-secondary)' }}>{bgColor.toUpperCase()}</span>
+                </div>
               </div>
               <div>
-                <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Dots Color</label>
-                <input 
-                  type="color" 
-                  value={fgColor}
-                  onChange={(e) => setFgColor(e.target.value)}
-                  style={{ width: '100%', height: '45px', background: 'transparent', border: 'none', cursor: 'pointer' }}
-                />
+                <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block', fontWeight: 600 }}>Foreground</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '10px' }}>
+                  <input 
+                    type="color" 
+                    value={fgColor}
+                    onChange={(e) => setFgColor(e.target.value)}
+                    style={{ width: '36px', height: '36px', background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
+                  />
+                  <span style={{ fontSize: '0.8rem', fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-secondary)' }}>{fgColor.toUpperCase()}</span>
+                </div>
               </div>
             </div>
 
             <div>
-              <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Error Correction</label>
+              <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block', fontWeight: 600 }}>Error Correction</label>
               <select 
                 value={level}
                 onChange={(e) => setLevel(e.target.value as any)}
-                style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.75rem', borderRadius: '8px', color: 'white', outline: 'none' }}
+                style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.75rem', borderRadius: '10px', color: 'white', outline: 'none', cursor: 'pointer' }}
               >
-                <option value="L">Low (7%)</option>
-                <option value="M">Medium (15%)</option>
-                <option value="Q">Quartile (25%)</option>
-                <option value="H">High (30%)</option>
+                <option value="L" style={{ background: '#111' }}>Low (7%)</option>
+                <option value="M" style={{ background: '#111' }}>Medium (15%)</option>
+                <option value="Q" style={{ background: '#111' }}>Quartile (25%)</option>
+                <option value="H" style={{ background: '#111' }}>High (30%)</option>
               </select>
             </div>
           </div>
         </div>
 
         {/* Preview */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div 
             className="glass-panel"
             style={{ 
@@ -101,47 +108,47 @@ const QrGenerator = () => {
               justifyContent: 'center',
               background: bgColor,
               borderRadius: '24px',
-              padding: '3rem',
-              transition: 'all 0.4s ease'
+              padding: '2rem',
+              transition: 'all 0.4s ease',
+              minHeight: '320px',
+              border: '4px solid rgba(255,255,255,0.05)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
             }}
           >
             <div ref={qrRef} style={{ 
               background: fgColor === '#ffffff' ? 'rgba(255,255,255,0.1)' : 'transparent',
-              padding: '2rem',
+              padding: '1.5rem',
               borderRadius: '20px',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+              boxShadow: '0 15px 30px rgba(0,0,0,0.2)',
+              maxWidth: '100%',
+              display: 'flex',
+              justifyContent: 'center'
             }}>
               <QRCodeSVG 
                 value={value} 
-                size={Math.min(size, 300)} 
+                size={Math.min(size, 240)} 
                 includeMargin={false}
                 level={level}
                 fgColor={fgColor}
                 bgColor="transparent"
+                style={{ width: '100%', height: 'auto', maxWidth: '240px' }}
               />
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-            <button 
-              onClick={downloadQR}
-              style={{ 
-                flex: 1, 
-                background: 'var(--accent-primary)', 
-                color: 'white', 
-                border: 'none', 
-                padding: '1rem', 
-                borderRadius: '12px', 
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}
-            >
-              <Download size={18} /> Download PNG
-            </button>
-          </div>
+          <button 
+            onClick={downloadQR}
+            className="btn-primary"
+            style={{ 
+              width: '100%', 
+              padding: '1rem', 
+              borderRadius: '12px', 
+              fontWeight: 700,
+              fontSize: '1rem'
+            }}
+          >
+            <Download size={20} /> Download QR Code
+          </button>
         </div>
       </div>
     </div>

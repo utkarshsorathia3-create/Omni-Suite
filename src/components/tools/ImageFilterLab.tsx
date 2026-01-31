@@ -30,12 +30,12 @@ const ImageFilterLab = () => {
   });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '2rem' }}>
+    <div className="tool-layout">
+      <div className="tool-grid">
         {/* Preview Area */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          <div className="glass-panel" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-             <ImageIcon size={18} style={{ color: 'var(--text-muted)' }} />
+          <div className="glass-panel" style={{ padding: '0.75rem 1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+             <ImageIcon size={18} className="text-gradient" />
              <input 
               type="text" 
               value={imageUrl} 
@@ -46,14 +46,17 @@ const ImageFilterLab = () => {
           </div>
           
           <div className="glass-panel" style={{ 
-            height: '450px', 
+            height: 'auto',
+            minHeight: '300px',
+            aspectRatio: '4/3',
             borderRadius: '24px', 
             overflow: 'hidden',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             background: 'rgba(0,0,0,0.4)',
-            border: '8px solid rgba(255,255,255,0.03)'
+            border: '4px solid rgba(255,255,255,0.03)',
+            padding: '1rem'
           }}>
             <img 
               src={imageUrl} 
@@ -63,20 +66,21 @@ const ImageFilterLab = () => {
                 maxHeight: '100%', 
                 objectFit: 'contain',
                 filter: filterString,
-                transition: 'filter 0.1s ease'
+                transition: 'filter 0.1s ease',
+                borderRadius: '8px'
               }} 
             />
           </div>
         </div>
 
         {/* Controls Area */}
-        <div className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-             <h3 className="font-outfit" style={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Sliders size={18} /> Filters</h3>
-             <button onClick={handleReset} style={{ background: 'transparent', border: 'none', color: 'var(--accent-secondary)', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.25rem' }}><RefreshCw size={14} /> RESET</button>
+        <div className="glass-panel">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+             <h3 className="font-outfit" style={{ fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Sliders size={18} className="text-gradient" /> Filters</h3>
+             <button onClick={handleReset} style={{ background: 'transparent', border: 'none', color: 'var(--accent-secondary)', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.25rem' }}><RefreshCw size={14} /> RESET</button>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', flex: 1 }}>
+          <div className="panel-stack" style={{ gap: '1rem' }}>
             {Object.entries(filters).map(([key, value]) => (
               <div key={key}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -89,19 +93,20 @@ const ImageFilterLab = () => {
                   max={key === 'hue' ? 360 : key === 'blur' ? 20 : 200} 
                   value={value}
                   onChange={(e) => setFilters({...filters, [key]: parseInt(e.target.value)})}
-                  style={{ width: '100%', accentColor: 'var(--accent-primary)' }}
+                  style={{ width: '100%', accentColor: 'var(--accent-primary)', height: '1.5rem', cursor: 'pointer' }}
                 />
               </div>
             ))}
           </div>
 
           <div style={{ marginTop: '2rem' }}>
-            <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '12px', fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'monospace', wordBreak: 'break-all', marginBottom: '1rem' }}>
+            <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '12px', fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace', wordBreak: 'break-all', marginBottom: '1rem', lineHeight: '1.4' }}>
               filter: {filterString};
             </div>
             <button 
               onClick={() => navigator.clipboard.writeText(`filter: ${filterString};`)}
-              style={{ width: '100%', background: 'var(--accent-primary)', border: 'none', padding: '0.8rem', borderRadius: '10px', color: 'white', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+              className="btn-primary"
+              style={{ width: '100%', padding: '0.85rem' }}
             >
               <Copy size={16} /> Copy CSS
             </button>

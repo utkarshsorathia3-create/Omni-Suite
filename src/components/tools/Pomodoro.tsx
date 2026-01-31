@@ -52,16 +52,17 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '500px' }}>
+    <div className="tool-layout">
       <div 
         className="glass-panel" 
         style={{ 
-          padding: '4rem', 
+          padding: '2rem 1.5rem', 
           width: '100%', 
           maxWidth: '500px', 
           textAlign: 'center',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          margin: '0 auto'
         }}
       >
         {/* Glow Effect */}
@@ -79,20 +80,21 @@ const Pomodoro = () => {
         }} />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
             <button 
               onClick={() => switchMode('work')}
               style={{
-                padding: '0.6rem 1.5rem',
+                padding: '0.6rem 1.25rem',
                 borderRadius: '100px',
                 border: '1px solid rgba(255,255,255,0.1)',
                 background: mode === 'work' ? 'rgba(139, 92, 246, 0.2)' : 'transparent',
                 color: mode === 'work' ? 'var(--accent-primary)' : 'var(--text-muted)',
-                fontWeight: 600,
-                fontSize: '0.9rem',
+                fontWeight: 700,
+                fontSize: '0.8rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem'
+                gap: '0.5rem',
+                transition: 'all 0.3s ease'
               }}
             >
               <Brain size={16} /> Work
@@ -100,16 +102,17 @@ const Pomodoro = () => {
             <button 
               onClick={() => switchMode('break')}
               style={{
-                padding: '0.6rem 1.5rem',
+                padding: '0.6rem 1.25rem',
                 borderRadius: '100px',
                 border: '1px solid rgba(255,255,255,0.1)',
                 background: mode === 'break' ? 'rgba(236, 72, 153, 0.2)' : 'transparent',
                 color: mode === 'break' ? 'var(--accent-secondary)' : 'var(--text-muted)',
-                fontWeight: 600,
-                fontSize: '0.9rem',
+                fontWeight: 700,
+                fontSize: '0.8rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem'
+                gap: '0.5rem',
+                transition: 'all 0.3s ease'
               }}
             >
               <Coffee size={16} /> Break
@@ -117,44 +120,35 @@ const Pomodoro = () => {
           </div>
 
           <div style={{ 
-            fontSize: '8rem', 
+            fontSize: 'min(7rem, 20vw)', 
             fontWeight: 800, 
             fontFamily: 'Outfit, sans-serif', 
             letterSpacing: '-0.05em',
-            marginBottom: '1rem',
+            marginBottom: '0.5rem',
             lineHeight: 1,
             color: 'white'
           }}>
             {String(minutes).padStart(2, '0')}<span style={{ opacity: 0.3, color: 'var(--text-muted)' }}>:</span>{String(seconds).padStart(2, '0')}
           </div>
 
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', fontSize: '1.1rem' }}>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', fontSize: '1rem', fontWeight: 500 }}>
             {isActive ? 'Stay focused...' : 'Ready to start?'}
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', alignItems: 'center' }}>
             <button 
               onClick={resetTimer}
-              style={{ 
-                width: '56px', 
-                height: '56px', 
-                borderRadius: '50%', 
-                background: 'rgba(255,255,255,0.05)', 
-                border: '1px solid rgba(255,255,255,0.1)',
-                color: 'var(--text-secondary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
+              className="menuButton"
+              style={{ width: '48px', height: '48px' }}
             >
-              <RotateCcw size={24} />
+              <RotateCcw size={20} />
             </button>
 
             <button 
               onClick={toggleTimer}
               style={{ 
-                width: '84px', 
-                height: '84px', 
+                width: '72px', 
+                height: '72px', 
                 borderRadius: '50%', 
                 background: mode === 'work' ? 'var(--accent-primary)' : 'var(--accent-secondary)', 
                 color: 'white', 
@@ -163,29 +157,21 @@ const Pomodoro = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 boxShadow: mode === 'work' 
-                  ? '0 15px 35px -5px rgba(139, 92, 246, 0.5)' 
-                  : '0 15px 35px -5px rgba(236, 72, 153, 0.5)',
-                transform: isActive ? 'scale(0.95)' : 'scale(1)'
+                  ? '0 10px 30px -5px rgba(139, 92, 246, 0.5)' 
+                  : '0 10px 30px -5px rgba(236, 72, 153, 0.5)',
+                transform: isActive ? 'scale(0.95)' : 'scale(1)',
+                transition: 'all 0.3s var(--transition-bounce)'
               }}
             >
-              {isActive ? <Pause size={36} fill="white" /> : <Play size={36} fill="white" style={{ marginLeft: '4px' }} />}
+              {isActive ? <Pause size={32} fill="white" /> : <Play size={32} fill="white" style={{ marginLeft: '4px' }} />}
             </button>
 
             <button 
               onClick={() => setMuted(!muted)}
-              style={{ 
-                width: '56px', 
-                height: '56px', 
-                borderRadius: '50%', 
-                background: 'rgba(255,255,255,0.05)', 
-                border: '1px solid rgba(255,255,255,0.1)',
-                color: 'var(--text-secondary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
+              className="menuButton"
+              style={{ width: '48px', height: '48px' }}
             >
-              {muted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+              {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
             </button>
           </div>
         </div>

@@ -26,36 +26,37 @@ const UrlSlugForge = () => {
   };
 
   return (
-    <div className="animate-fade">
-      <div className="glass-panel" style={{ padding: '3rem', maxWidth: '800px', margin: '0 auto' }}>
-        <h3 className="font-outfit" style={{ fontSize: '1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+    <div className="tool-layout">
+      <div className="glass-panel" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <h3 className="font-outfit" style={{ fontSize: '1.2rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Hash size={24} className="text-gradient" /> URL Slug Forge
         </h3>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div className="panel-stack" style={{ gap: '2rem' }}>
           <div>
-            <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Input Title</label>
+            <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'block', fontWeight: 700 }}>Input Title</label>
             <input 
               type="text" 
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your title here..."
-              style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1.25rem', borderRadius: '12px', color: 'white', fontSize: '1.1rem', outline: 'none' }}
+              style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '12px', color: 'white', fontSize: '1rem', outline: 'none' }}
             />
           </div>
 
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-             <div style={{ flex: 1 }}>
-               <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Separator</label>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', alignItems: 'end' }}>
+             <div>
+               <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'block', fontWeight: 700 }}>Separator</label>
                <div style={{ display: 'flex', gap: '0.5rem' }}>
                  {['-', '_', '.'].map(s => (
                    <button 
                     key={s}
                     onClick={() => setSeparator(s)}
                     style={{ 
-                      flex: 1, padding: '0.75rem', borderRadius: '8px', 
+                      flex: 1, padding: '0.75rem', borderRadius: '10px', 
                       background: separator === s ? 'var(--accent-primary)' : 'rgba(255,255,255,0.05)',
-                      border: 'none', color: 'white', fontWeight: 700
+                      border: 'none', color: 'white', fontWeight: 800,
+                      transition: 'all 0.2s ease'
                     }}
                   >
                     {s}
@@ -64,15 +65,15 @@ const UrlSlugForge = () => {
                </div>
              </div>
              
-             <div style={{ flex: 2 }}>
-                <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem', display: 'block' }}>Generated Slug</label>
+             <div>
+                <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem', display: 'block', fontWeight: 700 }}>Generated Slug</label>
                 <div style={{ 
-                  background: 'rgba(0,0,0,0.3)', padding: '0.75rem 1.25rem', borderRadius: '12px', border: '1px solid rgba(139, 92, 246, 0.3)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: '52px'
+                  background: 'rgba(139, 92, 246, 0.05)', padding: '0.75rem 1.25rem', borderRadius: '12px', border: '1px solid rgba(139, 92, 246, 0.2)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: '48px', gap: '1rem'
                 }}>
-                  <span className="font-mono" style={{ color: 'var(--accent-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{slug}</span>
-                  <button onClick={copySlug} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
-                    {isCopied ? <span style={{ color: '#4ade80', fontSize: '0.8rem' }}>Copied!</span> : <Copy size={18} />}
+                  <span className="font-mono" style={{ color: 'var(--accent-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '0.95rem', fontWeight: 600 }}>{slug}</span>
+                  <button onClick={copySlug} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', flexShrink: 0 }}>
+                    {isCopied ? <span style={{ color: '#4ade80', fontSize: '0.75rem', fontWeight: 700 }}>Copied!</span> : <Copy size={18} />}
                   </button>
                 </div>
              </div>

@@ -81,59 +81,181 @@ h4,
   }
 }
 
-.fade-in {
+.animate-fade {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* Glass Card Utility */
-.glass-card {
+/* Glass Card & Panel Utility */
+.glass-card,
+.glass-panel {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: 16px;
+  padding: 1.5rem;
 }
 
-/* Tool Workspace Styles */
+@media (max-width: 768px) {
+
+  .glass-card,
+  .glass-panel {
+    padding: 1.25rem;
+  }
+}
+
+/* Tool Layout Utilities */
+.tool-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .tool-layout {
+    gap: 1.5rem;
+  }
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .tool-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.panel-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Responsive Element Heights */
+.h-600 {
+  height: 600px;
+}
+
+@media (max-width: 1024px) {
+  .h-600 {
+    height: auto;
+    min-height: 400px;
+  }
+}
+
+.h-400 {
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .h-400 {
+    height: auto;
+    min-height: 300px;
+  }
+}
+
+/* Responsive Containers */
 .tool-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
   width: 100%;
 }
 
-.tool-header {
-  margin-bottom: 2.5rem;
-  text-align: center;
+@media (max-width: 1024px) {
+  .tool-container {
+    padding: 2rem 1.5rem;
+  }
 }
 
+@media (max-width: 768px) {
+  .tool-container {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Header & Typography */
 .tool-title {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 1024px) {
+  .tool-title {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tool-title {
+    font-size: 2.25rem;
+  }
+}
+
+.tool-description {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .tool-description {
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsive Grid */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Layout Classes */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .layout-container {
+    flex-direction: column;
+  }
+}
+
+.workspace-area {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Text Gradients */
+.text-gradient {
   background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
 }
 
-.tool-description {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.tool-card {
-  padding: 2rem;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Button Styles */
+/* Button & UI Components */
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
@@ -155,23 +277,6 @@ h4,
   opacity: 0.95;
 }
 
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  padding: 0.75rem 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--glass-border);
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent-primary);
-}
-
-/* Input Styles */
 .input-field {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--glass-border);
@@ -180,19 +285,9 @@ h4,
   color: white;
   font-family: 'Inter', sans-serif;
   width: 100%;
-  transition: var(--transition-smooth);
 }
 
 .input-field:focus {
   outline: none;
   border-color: var(--accent-primary);
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
 }
