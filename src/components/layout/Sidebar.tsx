@@ -70,7 +70,7 @@ const Sidebar = () => {
 
   return (
     <aside className={styles.sidebar}>
-      <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }} aria-label="Go to homepage">
         <div className={styles.logoArea}>
           <div className={styles.logoIcon}>
             <Zap size={22} fill="currentColor" />
@@ -88,6 +88,7 @@ const Sidebar = () => {
           className={styles.searchInput}
           value={searchQuery}
           onChange={handleSearch}
+          aria-label="Search all tools"
         />
         <div className={styles.searchShortcut}>
           <span>{typeof window !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl+K'}</span>
