@@ -42,9 +42,20 @@ const Footer = () => {
         <div>
           <h4 style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Product</h4>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <Link href="/" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>All Tools</Link>
+            <Link href="/" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Home</Link>
             <Link href="/about" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>About</Link>
-            <Link href="/faq" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>FAQ</Link>
+            <Link href="/contact" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Contact</Link>
+          </nav>
+        </div>
+
+        {/* Tools Section */}
+        <div>
+          <h4 style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Popular Tools</h4>
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <Link href="/tools/json-master" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>JSON Master</Link>
+            <Link href="/tools/code-to-image" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Code to Image</Link>
+            <Link href="/tools/meta-tag-generator" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>SEO Meta Tags</Link>
+            <Link href="/tools/regex-tester" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Regex Tester</Link>
           </nav>
         </div>
 
@@ -54,18 +65,17 @@ const Footer = () => {
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <Link href="/privacy" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Privacy Policy</Link>
             <Link href="/terms" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Terms of Service</Link>
-            <Link href="/cookies" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Cookie Policy</Link>
           </nav>
         </div>
 
-        {/* Support Links */}
+        {/* Community Links */}
         <div>
-          <h4 style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Support</h4>
+          <h4 style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Community</h4>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <Link href="/contact" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Contact</Link>
             <a href="https://github.com/utkarshsorathia3-create/Omni-Suite" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Github size={16} /> GitHub
             </a>
+            <Link href="/branding" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.2s' }}>Branding</Link>
           </nav>
         </div>
       </div>

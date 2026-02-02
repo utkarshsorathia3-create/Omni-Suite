@@ -45,8 +45,8 @@ const nextConfig: NextConfig = {
   // Trailing slash handling for SEO
   trailingSlash: false,
 
-  // Skip trailing slash redirect for better performance
-  skipTrailingSlashRedirect: true,
+  // Skip trailing slash redirect for better performance (disabled for SEO consistency)
+  skipTrailingSlashRedirect: false,
 };
 
 export default nextConfig;

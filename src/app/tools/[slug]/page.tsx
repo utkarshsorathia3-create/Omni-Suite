@@ -25,13 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: tool.seoDescription,
     keywords: tool.keywords.join(', '),
     alternates: {
-      canonical: `/tools/${slug}`,
+      canonical: `https://omnisuite.online/tools/${slug}`,
     },
     openGraph: {
       title: tool.seoTitle,
       description: tool.seoDescription,
       type: 'website',
-      url: `/tools/${slug}`,
+      url: `https://omnisuite.online/tools/${slug}`,
     },
   };
 }
@@ -126,6 +126,25 @@ export default async function ToolPage({ params }: Props) {
               <li>SEO Optimized Output</li>
             </ul>
           </div>
+        </div>
+      </section>
+      {/* Related Tools Section */}
+      <section style={{ marginTop: '4rem' }}>
+        <h2 className="font-outfit" style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>Related Tools</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+          {TOOLS.filter(t => t.slug !== slug).sort(() => 0.5 - Math.random()).slice(0, 3).map((relatedTool) => (
+            <Link 
+              key={relatedTool.slug} 
+              href={`https://omnisuite.online/tools/${relatedTool.slug}`}
+              className="glass-card"
+              style={{ padding: '1.5rem', textDecoration: 'none', color: 'inherit', transition: 'var(--transition-smooth)' }}
+            >
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent-primary)' }}>{relatedTool.name}</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                {relatedTool.description}
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
     </main>

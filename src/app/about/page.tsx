@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Info, Zap, Code, Palette, Users, Target } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About OmniSuite',
+  title: 'About Us | OmniSuite',
   description: 'Learn about OmniSuite - a privacy-first, browser-based utility platform built for modern professionals.',
 };
 

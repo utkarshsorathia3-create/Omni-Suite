@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Mail, MessageSquare, Github, Send } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Us | OmniSuite',
   description: 'Get in touch with the OmniSuite team. Report bugs, request features, or ask questions.',
 };
 

@@ -41,7 +41,7 @@ export const TOOLS: Tool[] = [
     slug: "gradient-generator",
     description: "Create complex mesh and linear gradients with CSS/SVG export.",
     category: "design",
-    seoTitle: "Modern CSS Gradient Generator | Omni-Suite",
+    seoTitle: "Modern CSS Gradient Generator | OmniSuite",
     seoDescription: "Design premium CSS gradients and mesh effects with our interactive forge. Export as CSS or SVG code.",
     keywords: ["css gradient generator", "mesh gradient", "ui design tools", "web design"]
   },
@@ -50,7 +50,7 @@ export const TOOLS: Tool[] = [
     slug: "timezone-converter",
     description: "A global slider to see what time it is everywhere—perfect for meeting planning.",
     category: "productivity",
-    seoTitle: "Interactive World Clock & Meeting Planner | Omni-Suite",
+    seoTitle: "Interactive World Clock & Meeting Planner | OmniSuite",
     seoDescription: "Plan international meetings easily with our visual timezone mapper. Compare times across multiple cities instantly.",
     keywords: ["timezone converter", "world clock", "meeting planner", "utc time"]
   },
@@ -60,7 +60,7 @@ export const TOOLS: Tool[] = [
     slug: "regex-tester",
     description: "Visualize and test regular expressions with real-time explanations.",
     category: "developer",
-    seoTitle: "Visual Regex Tester & Debugger | Omni-Suite",
+    seoTitle: "Visual Regex Tester & Debugger | OmniSuite",
     seoDescription: "Test your regular expressions and understand how they work with our interactive regex playground.",
     keywords: ["regex tester", "regex debugger", "regular expression"]
   },
@@ -69,7 +69,7 @@ export const TOOLS: Tool[] = [
     slug: "svg-previewer",
     description: "Paste and tweak SVG paths with real-time visual feedback.",
     category: "design",
-    seoTitle: "SVG Path Editor & Visualizer | Omni-Suite",
+    seoTitle: "SVG Path Editor & Visualizer | OmniSuite",
     seoDescription: "Inspect and edit SVG path data visually. Perfect for web designers and developers.",
     keywords: ["svg path preview", "svg editor", "vector tools"]
   },
@@ -78,7 +78,7 @@ export const TOOLS: Tool[] = [
     slug: "qr-generator",
     description: "Generate custom QR codes with logos and brand colors.",
     category: "content",
-    seoTitle: "Custom QR Code Generator with Logo | Omni-Suite",
+    seoTitle: "Custom QR Code Generator with Logo | OmniSuite",
     seoDescription: "Create beautiful, branded QR codes for free. Customize colors, shapes, and add your own logo.",
     keywords: ["qr code generator", "branded qr code", "free qr creator"]
   },
@@ -87,7 +87,7 @@ export const TOOLS: Tool[] = [
     slug: "pomodoro",
     description: "Stay productive with a glassmorphic timer and ambient lo-fi sounds.",
     category: "productivity",
-    seoTitle: "Aesthetic Pomodoro Timer with Lo-Fi Music | Omni-Suite",
+    seoTitle: "Aesthetic Pomodoro Timer with Lo-Fi Music | OmniSuite",
     seoDescription: "Boost your focus with our beautiful Pomodoro timer featuring integrated ambient background sounds.",
     keywords: ["pomodoro timer", "focus timer", "lofi productivity"]
   },
@@ -96,7 +96,7 @@ export const TOOLS: Tool[] = [
     slug: "contrast-checker",
     description: "Verify WCAG compliance with real-time UI element previews.",
     category: "design",
-    seoTitle: "WCAG Color Contrast Checker | Omni-Suite",
+    seoTitle: "WCAG Color Contrast Checker | OmniSuite",
     seoDescription: "Ensure your designs are accessible with our real-time color contrast analyzer.",
     keywords: ["accessibility", "contrast checker", "wcag 2.1", "a11y"]
   },
@@ -105,7 +105,7 @@ export const TOOLS: Tool[] = [
     slug: "password-lab",
     description: "Generate secure passwords and visualize their crack-time entropy.",
     category: "productivity",
-    seoTitle: "Secure Password Generator & Strength Meter | Omni-Suite",
+    seoTitle: "Secure Password Generator & Strength Meter | OmniSuite",
     seoDescription: "Create uncrackable passwords and check their security strength with our interactive laboratory.",
     keywords: ["password generator", "password strength", "cybersecurity"]
   },
@@ -114,7 +114,7 @@ export const TOOLS: Tool[] = [
     slug: "markdown-editor",
     description: "A premium markdown editor with real-time preview and export.",
     category: "developer",
-    seoTitle: "Online Markdown Editor with Live Preview | Omni-Suite",
+    seoTitle: "Online Markdown Editor with Live Preview | OmniSuite",
     seoDescription: "Write and preview markdown instantly with our distraction-free, premium editor.",
     keywords: ["markdown editor", "md previewer", "writing tools"]
   },
@@ -123,7 +123,7 @@ export const TOOLS: Tool[] = [
     slug: "url-slug",
     description: "Clean and optimize text for SEO-friendly URL slugs.",
     category: "content",
-    seoTitle: "SEO URL Slug Generator & Cleaner | Omni-Suite",
+    seoTitle: "SEO URL Slug Generator & Cleaner | OmniSuite",
     seoDescription: "Convert any text into a clean, SEO-optimized URL slug instantly.",
     keywords: ["slug generator", "url cleaner", "seo helper"]
   },
@@ -132,7 +132,7 @@ export const TOOLS: Tool[] = [
     slug: "base64",
     description: "Encode and decode strings or images to Base64 effortlessly.",
     category: "developer",
-    seoTitle: "Online Base64 Encoder & Decoder | Omni-Suite",
+    seoTitle: "Online Base64 Encoder & Decoder | OmniSuite",
     seoDescription: "Quickly convert text or images to Base64 and vice versa with our simple utility.",
     keywords: ["base64 encoder", "base64 decoder", "data conversion"]
   },
@@ -141,7 +141,7 @@ export const TOOLS: Tool[] = [
     slug: "csv-to-table",
     description: "Drag a CSV file and get a searchable, sortable data table.",
     category: "productivity",
-    seoTitle: "Convert CSV to Interactive HTML Table | Omni-Suite",
+    seoTitle: "Convert CSV to Interactive HTML Table | OmniSuite",
     seoDescription: "Transform your raw CSV data into beautiful, sortable, and searchable interactive tables.",
     keywords: ["csv to table", "data visualizer", "csv viewer"]
   },
@@ -150,7 +150,7 @@ export const TOOLS: Tool[] = [
     slug: "unit-converter",
     description: "Convert units across length, weight, temperature, and more with instant results.",
     category: "productivity",
-    seoTitle: "Smart Unit Converter Tool | Omni-Suite",
+    seoTitle: "Smart Unit Converter Tool | OmniSuite",
     seoDescription: "Fast and lightweight unit converter for developers and everyday users.",
     keywords: ["unit converter", "metric conversion", "measurement tool"]
   },
@@ -159,7 +159,7 @@ export const TOOLS: Tool[] = [
     slug: "image-filters",
     description: "Apply premium CSS filters to your images and export the results.",
     category: "design",
-    seoTitle: "Web-Based CSS Image Filter Tool | Omni-Suite",
+    seoTitle: "Web-Based CSS Image Filter Tool | OmniSuite",
     seoDescription: "Edit your images with professional-grade CSS filters directly in your browser.",
     keywords: ["image filter", "css filters", "photo editor"]
   },
@@ -168,7 +168,7 @@ export const TOOLS: Tool[] = [
     slug: "lorem-ipsum",
     description: "Generate themed placeholder text for your design projects.",
     category: "content",
-    seoTitle: "Professional Lorem Ipsum Generator | Omni-Suite",
+    seoTitle: "Professional Lorem Ipsum Generator | OmniSuite",
     seoDescription: "The most beautiful and customizable placeholder text generator for designers.",
     keywords: ["lorem ipsum", "placeholder text", "dummy text"]
   },
@@ -177,7 +177,7 @@ export const TOOLS: Tool[] = [
     slug: "diff-checker",
     description: "Compare two pieces of text and visualize the differences clearly.",
     category: "developer",
-    seoTitle: "Online Text Diff Checker & Comparison | Omni-Suite",
+    seoTitle: "Online Text Diff Checker & Comparison | OmniSuite",
     seoDescription: "Easily find differences between two text snippets with our side-by-side comparison tool.",
     keywords: ["diff checker", "text comparison", "code diff"]
   },
@@ -186,7 +186,7 @@ export const TOOLS: Tool[] = [
     slug: "readability-checker",
     description: "Check text readability, word count, and estimated reading time.",
     category: "content",
-    seoTitle: "Free Readability & SEO Text Analyzer | Omni-Suite",
+    seoTitle: "Free Readability & SEO Text Analyzer | OmniSuite",
     seoDescription: "Improve your content with our readability score and word count analyzer.",
     keywords: ["readability checker", "word count", "reading time"]
   }

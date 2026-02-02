@@ -6,12 +6,16 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+export const viewport = {
+  themeColor: '#8b5cf6',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://omnisuite.online'),
-  title: {
-    default: "OmniSuite | 20+ Free Developer & Designer Tools ⚡ Privacy-First",
-    template: "%s | OmniSuite"
-  },
+  title: "OmniSuite | 20+ Free Developer & Designer Tools ⚡ Privacy-First",
   description: "🚀 Free, fast, and private. 20+ premium browser-based tools for developers and designers. JSON formatter, code to image, SEO tools & more. No signup required!",
   keywords: [
     "free developer tools", 
@@ -25,6 +29,11 @@ export const metadata: Metadata = {
     "web developer utilities"
   ],
   authors: [{ name: "OmniSuite Team" }],
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: "OmniSuite | 20+ Free Developer Tools ⚡",
     description: "Premium browser-based utilities. JSON formatter, code beautifier, SEO tools & more. 100% free, private, and lightning-fast.",
@@ -32,11 +41,20 @@ export const metadata: Metadata = {
     siteName: "OmniSuite",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: 'https://omnisuite.online/icon.png', // Ideally use a proper OG image
+        width: 512,
+        height: 512,
+        alt: 'OmniSuite Toolbox',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "OmniSuite | Free Developer & Designer Toolkit",
     description: "20+ premium tools. No signup. No tracking. Just pure productivity. ⚡",
+    images: ['https://omnisuite.online/icon.png'],
   },
   robots: {
     index: true,

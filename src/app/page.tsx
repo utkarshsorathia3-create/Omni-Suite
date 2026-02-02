@@ -18,7 +18,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
     "@type": "Organization",
     "name": "OmniSuite",
     "url": "https://omnisuite.online",
-    "logo": "https://omnisuite.online/logo.png",
+    "logo": "https://omnisuite.online/icon.png",
     "description": "Premium browser-based utility tools for developers, designers, and content creators",
     "sameAs": [
       "https://github.com/utkarshsorathia3-create/Omni-Suite"

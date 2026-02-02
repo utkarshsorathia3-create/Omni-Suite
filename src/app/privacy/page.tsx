@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Shield, Lock, Eye, Database, Cookie } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy | OmniSuite',
   description: 'Learn how OmniSuite protects your privacy. We process all data locally in your browser with zero server-side storage.',
 };
 
