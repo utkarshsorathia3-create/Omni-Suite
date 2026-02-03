@@ -53,10 +53,12 @@ export default async function ToolPage({ params }: Props) {
     "description": tool.description,
     "applicationCategory": tool.category === 'developer' ? 'DeveloperTool' : 'MultimediaApplication',
     "operatingSystem": "Web",
+    "image": "https://omnisuite.online/icon.png",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "USD"
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
     }
   };
 

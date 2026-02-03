@@ -12,45 +12,55 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
       )
     : TOOLS;
 
-  // Organization Schema for Homepage
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OmniSuite",
-    "url": "https://omnisuite.online",
-    "logo": "https://omnisuite.online/icon.png",
-    "description": "Premium browser-based utility tools for developers, designers, and content creators",
-    "sameAs": [
-      "https://github.com/utkarshsorathia3-create/Omni-Suite"
-    ]
-  };
-
-  // WebSite Schema with Search Action
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "OmniSuite",
-    "url": "https://omnisuite.online",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://omnisuite.online/?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
+  // Consolidate schemas into an array
+  const fullSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OmniSuite",
+      "url": "https://omnisuite.online",
+      "logo": "https://omnisuite.online/icon.png",
+      "description": "Premium browser-based utility tools for developers, designers, and content creators",
+      "sameAs": ["https://github.com/utkarshsorathia3-create/Omni-Suite"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OmniSuite",
+      "url": "https://omnisuite.online",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://omnisuite.online/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "OmniSuite Tool Collection",
+      "description": "Browse our collection of 20+ free developer and designer tools.",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": filteredTools.map((tool, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "url": `https://omnisuite.online/tools/${tool.slug}`,
+          "name": tool.name,
+          "description": tool.description
+        }))
+      }
     }
-  };
+  ];
 
   return (
     <div className="tool-container">
       {/* Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(fullSchema) }}
       />
 
       <header style={{ marginBottom: '3rem' }} className="animate-fade">
